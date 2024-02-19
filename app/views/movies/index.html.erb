@@ -1,14 +1,46 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Movies</h1>
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
-</div>
+<table id="movies_table">
+  <thead>
+    <tr>
+      <th class="<%= 'sorted ' + session[:sort_order] if session[:sort_by] == 'title' %>">
+        <a href="#" onclick="sortTable('title')">Title</a>
+      </th>
+      <th class="<%= 'sorted ' + session[:sort_order] if session[:sort_by] == 'rating' %>">
+        <a href="#" onclick="sortTable('rating')">Rating</a>
+      </th>
+      <th class="<%= 'sorted ' + session[:sort_order] if session[:sort_by] == 'release_date' %>">
+        <a href="#" onclick="sortTable('release_date')">Release Date</a>
+      </th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date %></td>
+        <td><%= link_to "Show", movie %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "New movie", new_movie_path, class: "link-button"%>
 
-<%= link_to "New movie", new_movie_path %>
+<%= javascript_tag do %>
+  function sortTable(sortBy) {
+    var sortOrder = '<%= session[:sort_order] || "asc" %>';
+    var url = "<%= movies_path %>?sort_order=&sort_by=";
+    if (sortOrder == 'asc') {
+      sortOrder = 'desc';
+    } else {
+      sortOrder = 'asc';
+    }
+    console.log(url)
+    url = url.replace('sort_order=', 'sort_order=' + sortOrder);
+    url = url.replace('sort_by=', 'sort_by=' + sortBy);
+    window.location.href = url;
+  }
+
+<% end %>

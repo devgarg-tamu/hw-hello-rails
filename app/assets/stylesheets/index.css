@@ -1,0 +1,88 @@
+#movies_table th.sorted {
+  background-color: #18b0d6;
+}
+
+#movies_table th.sorted.asc::after {
+  content: " ▲";
+}
+
+#movies_table th.sorted.desc::after {
+  content: " ▼";
+}
+
+h1 {
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f4f4f4;
+}
+
+table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.link-button {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+}
+
+.link-button:hover {
+  background-color: #0056b3;
+}
+
+.container {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notice {
+  color: green;
+}
+
+.action-links {
+  margin-top: 20px;
+}
+
+.action-links a, .action-links input[type="submit"] form{
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.action-links a:hover, .action-links input[type="submit"]:hover form:hover{
+  background-color: #0056b3;
+}
+
